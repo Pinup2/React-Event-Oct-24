@@ -13,5 +13,6 @@ Thumbs.db
 dist/
 out/
 build/
+
 # If you choose not to commit lock files
 package-lock.json
