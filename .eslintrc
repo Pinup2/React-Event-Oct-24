@@ -1,10 +1,21 @@
 {
-    "extends": [
-      "airbnb",      
-      "prettier"
-    ],
-    "plugins": ["prettier"],
-    "rules": {
-      "prettier/prettier": "error"
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:react/jsx-runtime"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
   }
+}
