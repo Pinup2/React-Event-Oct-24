@@ -13,6 +13,7 @@ import { selectIsAuthorized } from './slice/authSlice';
 import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
+import ProfilePage from './Components/ProfilePage/ProfilePage';
 
 interface ProtectedRouteProps {
   element: React.ReactElement;
@@ -30,6 +31,7 @@ const App = () => (
         <Routes>
           <Route path="/login" element={<AuthPage />} />
           <Route path="/" element={<ProtectedRoute element={<ResponsepPage />} />} />
+          <Route path="/user" element={<ProtectedRoute element={<ProfilePage />} />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

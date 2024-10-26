@@ -1,7 +1,7 @@
 import { Stack, Pagination } from "@mui/material"
 import { useState, useEffect } from "react";
 import FavCard from "./FavCard"
-import { RequestCard } from "../RequestCard/RequestCard";
+import { RequestCard } from "../../RequestCard/RequestCard";
 
 export default function InfoFavorites() {
   const cards = Array.from(Array(10).keys());

@@ -1,6 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material"
 
-export default function Location() {
+type LocationProps = {
+  district: string,
+  city: string,
+}
+
+export default function Location({ district, city } : LocationProps) {
   return (
     <Box>
       <Stack gap="5px" direction="row">

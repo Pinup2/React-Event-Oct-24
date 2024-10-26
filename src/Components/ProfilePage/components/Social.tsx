@@ -1,7 +1,7 @@
 import { Stack, Box, Typography } from "@mui/material"
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'; 
-import vk from "../../assets/vk-logo.svg"
+import vk from "../../../assets/vk-logo.svg"
 
 type SocialProps = {
   type: string,

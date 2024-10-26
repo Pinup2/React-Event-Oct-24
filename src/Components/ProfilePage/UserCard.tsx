@@ -1,5 +1,5 @@
 import { Paper} from "@mui/material"
-import UserText from "./UserText"
+import UserText from "./components/UserText"
 import avatar from "../../assets/CardMedia_.png"
 
 export default function UserCard() {

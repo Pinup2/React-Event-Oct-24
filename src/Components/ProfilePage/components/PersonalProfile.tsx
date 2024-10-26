@@ -1,7 +1,13 @@
 import { Box, Stack, Typography } from "@mui/material"
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/createStore";
+import userDetails from "../userDetails";
 import Header from "./Header"
 
 export default function PersonalProfile() {
+  const data = useSelector((state:RootState) => state.auth.userData) as userDetails;
+  const { name, lastName } : userDetails = data;
+
   return (
     <Box>
       <Header name="Профиль"/>
@@ -13,7 +19,7 @@ export default function PersonalProfile() {
             Фамилия: 
         </Typography>
         <Typography variant="subtitle2">
-          Фамилия
+          {lastName}
         </Typography>
       </Stack>
       <Stack gap="5px" direction="row">
@@ -23,7 +29,7 @@ export default function PersonalProfile() {
             Имя: 
         </Typography>
         <Typography variant="subtitle2">
-          Имя
+          {name}
         </Typography>
       </Stack>
     </Box>
