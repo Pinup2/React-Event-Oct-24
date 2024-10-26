@@ -1,6 +1,7 @@
 import { Stack, Pagination } from "@mui/material"
 import { useState, useEffect } from "react";
 import FavCard from "./FavCard"
+import { RequestCard } from "../RequestCard/RequestCard";
 
 export default function InfoFavorites() {
   const cards = Array.from(Array(10).keys());
@@ -23,14 +24,31 @@ export default function InfoFavorites() {
   return (
     <Stack direction="column" alignItems="center">
       <Stack direction="row" spacing="24px" sx={{width: "100%"}}>
-        {currentCards.map((card) => <FavCard/>)}
+        {currentCards.map((card) => <RequestCard
+          key={card} 
+          title={"title"} 
+          organization={{title: "org", isVerified: true}}
+          location={{latitude: 3, longitude: 3, district: "district", city: "city"}}
+          goalDescription="goalDescription"
+          requesterType="person"
+          helpType="finance"
+          endingDate="date"
+          requestGoal={10}
+          requestGoalCurrentValue={5}
+          />)}
       </Stack>
       <Pagination
         onChange={turnPage} 
         count={Math.ceil(cards.length / cardsPerPage)}
         size="large"
         page={page}
-        sx={{marginTop: "30px", justifyContent: "center"}}
+        sx={{
+          marginTop: "30px", 
+          justifyContent: "center",
+          "& .Mui-selected": {
+            bgcolor: "#1E88E5",
+            color: "white"
+        }}}
       />
     </Stack>
   )

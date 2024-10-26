@@ -1,5 +1,5 @@
 .card {
-    width: 320px;
+    width: calc(33% - 24px);
     height: 843px;
     display: flex;
     flex-direction: column;
