@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { AppDispatch } from '../../store/createStore';
-import { setAuthUser } from '../../slice/authSlice'
+import { setAuthUser,setIsAuthorized } from '../../slice/authSlice'
 import { useDispatch } from 'react-redux';
 
 interface MyForm {
@@ -52,7 +52,9 @@ const Login = () => {
     try {
       const response = await axios.post('https://natticharity.eveloth.ru/api/auth', data);
       const token = response.data.token;
+      const isAuthorized = response.data.auth;
       dispatch(setAuthUser(token));
+      dispatch(setIsAuthorized(isAuthorized))
       resetForm();
     } catch (error) {
       console.log(error);
