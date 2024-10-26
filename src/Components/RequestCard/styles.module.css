@@ -1,0 +1,22 @@
+.card {
+    width: 320px;
+    height: 843px;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 16px;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 16px;
+}

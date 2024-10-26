@@ -1,13 +1,13 @@
 export const requestCardMock = [
   {
   id: "request-id-1",
-  title: "Сбор средств для пенсионерки",
+  title: "Сбор средств для пенсионерки Ангелины Ивановны ",
   organization: {
-    title: "Благотворительная организация",
+    title: "Фонд помощи для ветеранов и инвалидов \"Вера\"",
     isVerified: true
   },
   description: "Описание запроса на помощь.",
-  goalDescription: "Цель данного запроса.",
+  goalDescription: "Оплатить лечение МКБ в клинике \"Здоровье\".",
   actionsSchedule: [
     {
       stepLabel: "Шаг 1",
@@ -34,18 +34,18 @@ export const requestCardMock = [
     qualification: "professional"
   },
   contributorsCount: 10,
-  requestGoal: 10000,
-  requestGoalCurrentValue: 2500
+  requestGoal: 78000,
+  requestGoalCurrentValue: 35000
 },
   {
     id: "request-id-2",
-    title: "Сбор средств для дома престарелых",
+    title: "Сбор средств для дома престарелых “Родные стены” ",
     organization: {
       title: "Благотворительная организация",
       isVerified: true
     },
     description: "Описание запроса на помощь.",
-    goalDescription: "Цель данного запроса.",
+    goalDescription: "Купить инвалидное кресло. Обеспечить продуктами на 4 месяца.",
     actionsSchedule: [
       {
         stepLabel: "Шаг 1",
@@ -73,12 +73,12 @@ export const requestCardMock = [
       qualification: "professional"
     },
     contributorsCount: 10,
-    requestGoal: 10000,
-    requestGoalCurrentValue: 2500
+    requestGoal: 100000,
+    requestGoalCurrentValue: 20500
   },
   {
     id: "request-id-3",
-    title: "Помощь для инвалида",
+    title: "Помощь для инвалида Ивана Красинова",
     organization: {
       title: "Благотворительная организация",
       isVerified: true
@@ -91,7 +91,7 @@ export const requestCardMock = [
         isDone: true
       }
     ],
-    endingDate: "2023-12-31",
+    endingDate: "2028-06-08",
     location: {
       latitude: 40.712776,
       longitude: -74.005974,
@@ -103,7 +103,6 @@ export const requestCardMock = [
       phone: "+123456789",
       website: "https://example.com"
     },
-    // helpType: "material"
     requesterType: "person",
     helpType: "material",
     helperRequirements: {
@@ -113,6 +112,6 @@ export const requestCardMock = [
     },
     contributorsCount: 10,
     requestGoal: 10000,
-    requestGoalCurrentValue: 2500
+    requestGoalCurrentValue: 9500
   },
 ]
