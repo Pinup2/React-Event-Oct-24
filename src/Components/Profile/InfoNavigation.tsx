@@ -1,6 +1,7 @@
 import { Toolbar, ToggleButtonGroup } from "@mui/material"
 import { useState } from "react"
 import NavButton from "./NavButton"
+import ViewIcons from "./ViewIcons"
 
 type InfoNavigationProps = {
   firstSection: string,

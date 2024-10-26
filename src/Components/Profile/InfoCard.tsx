@@ -7,7 +7,7 @@ import InfoFavorites from "./InfoFavorites"
 
 export default function InfoCard() {
   const sections = ["pers", "cont", "fav"];
-  const [ section, setSection ] = useState<string>(sections[0]);
+  const [ section, setSection ] = useState<string>(sections[2]);
 
   const changeSection = (newSection: string | null) => {
     if (newSection === section || newSection === null) return;
@@ -22,7 +22,7 @@ export default function InfoCard() {
         padding: "20px",
         border: "1px solid #0000001F"
       }}>
-      <InfoNavigation firstSection={sections[0]} changeSection={changeSection}/>
+      <InfoNavigation firstSection={sections[2]} changeSection={changeSection}/>
       <Box sx={{padding: "24px"}}>
         {section === "pers" && <InfoPersonal />}
         {section === "cont" && <InfoContacts />}
