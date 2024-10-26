@@ -2,19 +2,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store/createStore';
 
 type User = {
-  email: string | null,
-  password: string | null,
+  token: string | null,
   isAuthorized: boolean,
 }
 
 type AuthPayload = {
-  email: string;
+  token: string;
   password: string;
 };
 
 const initialState: User = {
-  email: null,
-  password: null,
+  token: null,
   isAuthorized: false,
 };
 
@@ -23,8 +21,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthUser(state, { payload }: PayloadAction<AuthPayload>) {
-      state.email = payload.email;
-      state.password = payload.password;
+      state.token = payload.token;
     },
     setIsAuthorized(state, { payload }: PayloadAction<boolean>) {
       state.isAuthorized = payload;

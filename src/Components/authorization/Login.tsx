@@ -1,20 +1,24 @@
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
-import React from 'react';
-import {
-  Button,
-  Box,
-  Typography,
-  InputAdornment,
-  IconButton,
-  TextField
-} from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Button, Box, Typography, InputAdornment, IconButton, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 
 interface MyForm {
-  email: string;
+  login: string;
   password: string;
 }
+
+const validationSchema = Yup.object().shape({
+  login: Yup.string()
+    .email('Введите корректный email-адрес')
+    .required('Email обязателен'),
+  password: Yup.string()
+    .min(6, 'Введите корректный пароль')
+    .required('Пароль обязателен'),
+});
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,15 +30,16 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm<MyForm>({
+    resolver: yupResolver(validationSchema),
     defaultValues: {
-      email: '',
+      login: '',
       password: '',
     },
   });
 
   const resetForm = () => {
     reset({
-      email: '',
+      login: '',
       password: '',
     });
   };
@@ -42,37 +47,23 @@ const Login = () => {
   const submit: SubmitHandler<MyForm> = async (data) => {
     console.log(data);
     resetForm();
-    // try {
-
-    // } catch (error) {
-    // }
+    try {
+      const response = await axios.post('https://natticharity.eveloth.ru/api/auth', data);
+      console.log(response.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            flexGrow: 1,
-          }}
-        >
-          <Typography variant="h4" 
-          sx={{
-            mt: '64px',
-          }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+          <Typography variant="h4" sx={{ mt: '64px' }}>
             {'Авторизация'}
           </Typography>
-          <Typography variant="h5"
-          sx={{
-            mt: '90px',
-          }}>
+          <Typography variant="h5" sx={{ mt: '90px' }}>
             {'Вход'}
           </Typography>
           <Box
@@ -96,22 +87,22 @@ const Login = () => {
               }}
             >
               <Controller
-                name="email"
+                name="login"
                 control={control}
                 render={({ field }) => (
                   <TextField
-                  {...field}
-                  label="Логин"
-                  placeholder='Введите e-mail'
-                  variant="outlined"
-                  error={!!errors.email}
-                  helperText={errors.email ? 'Введите корректный email-адрес' : ''}
-                  fullWidth
-                  slotProps={{
-                    inputLabel: {
-                      shrink: true,
-                    },
-                  }}
+                    {...field}
+                    label="Логин"
+                    placeholder='Введите e-mail'
+                    variant="outlined"
+                    error={!!errors.login}
+                    helperText={errors.login ? errors.login.message : ''}
+                    fullWidth
+                    slotProps={{
+                      inputLabel: {
+                        shrink: true,
+                      },
+                    }}
                   />
                 )}
               />
@@ -125,6 +116,7 @@ const Login = () => {
                     placeholder="Введите пароль"
                     variant="outlined"
                     error={!!errors.password}
+                    helperText={errors.password ? errors.password.message : ''}
                     type={showPassword ? 'text' : 'password'}
                     fullWidth
                     slotProps={{
