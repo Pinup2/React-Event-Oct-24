@@ -16,7 +16,6 @@ export default function Profile() {
       <Box 
         sx={{
           width: "78.125%", 
-          height: "100vh", 
           bgcolor: grey[100],
           padding: "46px",
           border: "1px solid #0000001F"

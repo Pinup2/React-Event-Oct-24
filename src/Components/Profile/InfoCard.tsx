@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material"
+import { Paper, Box } from "@mui/material"
 import { useState } from "react"
 import InfoNavigation from "./InfoNavigation"
 import InfoPersonal from "./InfoPersonal"
@@ -19,14 +19,15 @@ export default function InfoCard() {
       sx={{
         width: "78.6%", 
         bgcolor: "white", 
-        height: "450px",
         padding: "20px",
         border: "1px solid #0000001F"
       }}>
       <InfoNavigation firstSection={sections[0]} changeSection={changeSection}/>
-      {section === "pers" && <InfoPersonal />}
-      {section === "cont" && <InfoContacts />}
-      {section === "fav" && <InfoFavorites />}
+      <Box sx={{padding: "24px"}}>
+        {section === "pers" && <InfoPersonal />}
+        {section === "cont" && <InfoContacts />}
+        {section === "fav" && <InfoFavorites />}
+      </Box>
     </Paper>
   )
 }

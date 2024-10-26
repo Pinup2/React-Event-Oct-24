@@ -1,10 +1,11 @@
 import { Box, Button, Stack, Typography } from "@mui/material"
+import Header from "./Header"
 
 export default function UserText() {
   return (
     <Box sx={{padding: "20px", borderTop: "1px solid #0000001F"}}>
-      <Typography variant="h6" component="h2" gutterBottom={true}>Имя Пользователя</Typography>
-      <Stack gap="3px" direction="row">
+      <Header name="Имя Фамилия"/>
+      <Stack gap="5px" direction="row">
         <Typography 
           variant="subtitle2" 
           sx={{fontWeight: "bold"}}>
