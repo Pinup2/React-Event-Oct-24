@@ -58,7 +58,7 @@ const Login = () => {
       const isAuthorized = response.data.auth;
       dispatch(setAuthUser(token));
       dispatch(setIsAuthorized(isAuthorized));
-      navigate('/requests');
+      navigate('/');
       resetForm();
     } catch (error) {
       console.log(error);

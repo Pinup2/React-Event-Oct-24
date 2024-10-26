@@ -29,7 +29,7 @@ const App = () => (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<AuthPage />} />
-        <Route path="/requests" element={<ProtectedRoute element={<Requests />} />} />
+        <Route path="/" element={<ProtectedRoute element={<Requests />} />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
