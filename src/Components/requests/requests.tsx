@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from '@mui/material';
+import { RequestCard } from '../RequestCard/RequestCard';
 
 export default function Requests() {
   const [page, setPage] = useState(1);
@@ -48,17 +49,28 @@ export default function Requests() {
       width: 1080,
       height: 1025,
       border: '1px solid grey',
+      display:'flex',
+      "flex direction": 'column',
+      gap:'24px',
+      position:'relative',
+      'justify-content':'center'
     }}>
       {paginateData(page).length > 0 ? (
         paginateData(page).map((item) => (
-          <div key={item.id}>{item.title}</div>
+          <RequestCard key={item.id} title={item.title} goalDescription={item.goalDescription} requestGoalCurrentValue={item.requestGoalCurrentValue}
+            requesterType={item.requesterType} requestGoal={item.requestGoal} location={item.location}  endingDate={item.endingDate} organization={item.organization}
+                       helpType={item.helpType}
+          />
         ))
       ) : (
         <div>No data</div>
       )}
+
       <Pagination
         sx={{
           color: '#1E88E5',
+          position: 'absolute',
+          bottom:'40px'
         }}
         count={pageCount > 0 ? pageCount : 1}
         page={page}
