@@ -150,7 +150,7 @@ const Login = () => {
               />
             </Box>
             <Button
-              sx={{ 
+              sx={{
                 width: '100%',
                 boxSizing: 'border-box',
                 height: '42px',

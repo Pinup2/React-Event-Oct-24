@@ -3,26 +3,31 @@ import { Box, Typography, Link } from "@mui/material";
 
 const Footer = () => {
   return (
-    <>
-    <Box sx={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      height: '152px'
-    }}>
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr 1fr',
+        alignItems: 'center',
+        height: '152px',
+      }}
+    >
       <Typography>Об ивенте</Typography>
-      <Link href="https://github.com/Pinup2/React-Event-Oct-24" 
-      style={{
-        textDecoration: 'none',
-        color: 'black',
-        fontFamily: 'Roboto, sans-serif'
-      }}>
+      <Link
+        href="https://github.com/Pinup2/React-Event-Oct-24"
+        sx={{
+          textDecoration: 'none',
+          color: 'black',
+          fontFamily: 'Roboto, sans-serif',
+          textAlign: 'center',
+        }}
+      >
         Github проекта
       </Link>
-      <Typography>Чат для джунов</Typography>
+      <Box display="flex" justifyContent="flex-end">
+        <Typography>Чат для джунов</Typography>
+      </Box>
     </Box>
-    </>
-  )
+  );
 }
 
 export default Footer;

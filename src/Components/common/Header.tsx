@@ -1,29 +1,36 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import iconHeader from "../../assets/iconHeader.svg"
+import iconHeader from "../../assets/iconHeader.svg";
 
 const Header = () => {
   return (
-    <>
-    <Box sx={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      height: '84px'
-    }}>
-      <img src={iconHeader} style={{width: "224px"}}/>
-      <Typography>Запросы о помощи</Typography>
-      <Button
-      variant="outlined"
+    <Box
       sx={{
-        color: 'black',
-        borderColor: 'black',
-      }}>
-        Войти
-      </Button>
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr 1fr',
+        alignItems: 'center',
+        height: '84px',
+      }}
+    >
+      <Box>
+        <img src={iconHeader} style={{ width: "224px" }} alt="Icon Header" />
+      </Box>
+      <Box display="flex" justifyContent="center">
+        <Typography>Запросы о помощи</Typography>
+      </Box>
+      <Box display="flex" justifyContent="flex-end">
+        <Button
+          variant="outlined"
+          sx={{
+            color: 'black',
+            borderColor: 'black',
+          }}
+        >
+          Войти
+        </Button>
+      </Box>
     </Box>
-    </>
-  )
-}
+  );
+};
 
 export default Header;
