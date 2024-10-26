@@ -18,7 +18,9 @@ export default function Profile() {
           width: "78.125%", 
           height: "100vh", 
           bgcolor: grey[100],
-          padding: "46px"}}>
+          padding: "46px",
+          border: "1px solid #0000001F"
+        }}>
         <Typography variant="h4" component="h1">Мой профиль</Typography>
         <Stack direction="row" spacing="20px" sx={{marginTop: "46px"}}>
           <UserCard />

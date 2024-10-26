@@ -13,7 +13,7 @@ export default function InfoCard() {
         padding: "20px",
         border: "1px solid #0000001F"
       }}>
-      InfoCard
+      <InfoNavigation />
     </Paper>
   )
 }
