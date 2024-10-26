@@ -3,13 +3,15 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pagination } from '@mui/material';
 import { RequestCard } from '../RequestCard/RequestCard';
+import {useSelector} from "react-redux";
+import { selectSetAuthUser } from "../../slice/authSlice";
 
 export default function Requests() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 3;
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmYTY2NDc3LWIxNWYtNDBlZC04YjQ4LTc0NmM2NDYyYWUzOCIsImlhdCI6MTcyOTk2MDYxOCwiZXhwIjoxNzI5OTY0MjE4fQ.0AeLi-Td5Eub-pO7r4o2u-xryqN-Pyzf69WbK8FF0rg'; // Замените на ваш токен
+  const token = useSelector(selectSetAuthUser);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +28,7 @@ export default function Requests() {
         setData(response.data);
         setPageCount(7)
       } catch (error) {
+        // eslint-disable-next-line no-undef
         console.error("Ошибка при загрузке данных с сервера:", error);
       }
     };
@@ -57,9 +60,17 @@ export default function Requests() {
     }}>
       {paginateData(page).length > 0 ? (
         paginateData(page).map((item) => (
-          <RequestCard key={item.id} title={item.title} goalDescription={item.goalDescription} requestGoalCurrentValue={item.requestGoalCurrentValue}
-            requesterType={item.requesterType} requestGoal={item.requestGoal} location={item.location}  endingDate={item.endingDate} organization={item.organization}
-                       helpType={item.helpType}
+          <RequestCard
+            key={item.id}
+            title={item.title}
+            goalDescription={item.goalDescription}
+            requestGoalCurrentValue={item.requestGoalCurrentValue}
+            requesterType={item.requesterType}
+            requestGoal={item.requestGoal}
+            location={item.location}
+            endingDate={item.endingDate}
+            organization={item.organization}
+            helpType={item.helpType}
           />
         ))
       ) : (

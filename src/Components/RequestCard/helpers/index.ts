@@ -13,8 +13,13 @@ export const imageSelector = (requesterType: string, helpType: string | undefine
 }
 
 export const formatDateString = (dateString: string): string => {
-  const [year, month, day] = dateString.split('-');
-  return `${day}.${month}.${year}`;
+  const date = new Date(dateString);
+
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  return `${day.toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${year}`;
 };
 
 export const calculateProgress = (requestGoal: number, requestGoalCurrentValue: number): number => {
