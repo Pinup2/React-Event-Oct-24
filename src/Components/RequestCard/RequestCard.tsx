@@ -111,7 +111,7 @@ export const RequestCard = ({title, organization, location, goalDescription, req
           </div>
 
 
-          <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '4px', width: "100%"}}>
             <Typography variant="subtitle2" fontWeight="fontWeightBold">
               Мы собрали
             </Typography>
