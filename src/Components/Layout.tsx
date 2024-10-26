@@ -5,18 +5,27 @@ import Header from './common/Header';
 import { Box } from '@mui/material';
 
 const Layout = () => (
-  <>
-  <Box sx={{
-    pl: '210px',
-    pr: '210px',
-  }}>
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      pl: '210px',
+      pr: '210px',
+    }}
+  >
     <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+    <Box
+      component="main"
+      sx={{
+        flex: 1,
+        // border: `1px solid #E0E0E0`,
+      }}
+    >
+      <Outlet />
+    </Box>
+    <Footer />
   </Box>
-  </>
 );
 
 export default Layout;
