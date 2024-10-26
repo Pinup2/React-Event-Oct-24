@@ -7,7 +7,8 @@ import { Box } from '@mui/material';
 const Layout = () => (
   <>
   <Box sx={{
-
+    pl: '210px',
+    pr: '210px',
   }}>
     <Header />
       <main>
