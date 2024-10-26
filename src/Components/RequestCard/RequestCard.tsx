@@ -29,10 +29,20 @@ type RequestCardPropsType = {
   endingDate: string,
   requestGoal: number,
   requestGoalCurrentValue: number,
+  onClick: () => void,
 }
 
 
-export const RequestCard = ({title, organization, location, goalDescription, requesterType, helpType, endingDate, requestGoal, requestGoalCurrentValue}: RequestCardPropsType) => {
+export const RequestCard = ({ title,
+                              organization,
+                              location,
+                              goalDescription,
+                              requesterType,
+                              helpType,
+                              endingDate,
+                              requestGoal,
+                              onClick,
+                              requestGoalCurrentValue}: RequestCardPropsType) => {
   // TODO убрать isClicked
   const isClicked = true;
   // TODO пример мапинга — удалить после использования
@@ -126,7 +136,7 @@ export const RequestCard = ({title, organization, location, goalDescription, req
             </div>
           </div>
 
-          <Button variant="contained" fullWidth>Помочь</Button>
+          <Button variant="contained" fullWidth onClick={onClick}>Помочь</Button>
         </div>
 
       </Card>

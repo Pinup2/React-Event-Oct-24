@@ -12,13 +12,13 @@ import { selectIsAuthorized } from './slice/authSlice';
 import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
+import RequestsPage from "./Components/RequestsPage/RequestsPage";
 import {ResponsePage} from './Components/ResponsePage';
 import HelpRequestDetails from './Components/HelpRequestDetails';
 import {ContributionSidebar} from './Components/ContributionSidebar';
 import FavoriteButton from './Components/FavoriteButton';
 import 'react-toastify/dist/ReactToastify.css';
 import { Box } from '@mui/material';
-import Requests from "./Components/requests/Requests";
 
 interface ProtectedRouteProps {
   element: React.ReactElement;
@@ -26,6 +26,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
   const isAuthorized = useSelector(selectIsAuthorized);
+
   return isAuthorized ? element : <Navigate to="/login" replace />;
 };
 
@@ -42,7 +43,7 @@ const App = () => (
           path="/"
           element={<ProtectedRoute element={<Navigate to="/request/request-id-1" replace />} />}
         />
-        <Route path="/" element={<ProtectedRoute element={<Requests />} />} />
+        <Route path="/" element={<ProtectedRoute element={<RequestsPage />} />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
