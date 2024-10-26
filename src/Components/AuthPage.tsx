@@ -10,14 +10,12 @@ const AuthPage = () => {
         sx={{
           display: 'flex',
           width: '100%',
-          pl: '40px',
-          pr: '40px'
         }}
       >
-        <Box sx={{ flex: 1, }}>
+        <Box sx={{ flex: 1, ml: '40px'}}>
           <Login />
         </Box>
-        <Box sx={{ flex: 1, ml: '40px', }}>
+        <Box sx={{ flex: 1, ml: '40px' }}>
           <Profiles />
         </Box>
       </Box>
