@@ -1,7 +1,10 @@
+import React from "react";
+import AuthPage from "./Components/AuthPage";
+
 function App() {
   return (
     <>
-      <h1>React-Event-Oct-24</h1>
+      <AuthPage />
     </>
   );
 }
