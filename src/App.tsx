@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
 import Requests from "./Components/requests/Requests";
+import Layout from './Components/Layout';
 
 interface ProtectedRouteProps {
   element: React.ReactElement;
@@ -28,8 +29,10 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<AuthPage />} />
-        <Route path="/" element={<ProtectedRoute element={<Requests />} />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/login" element={<AuthPage />} />
+          <Route index element={<ProtectedRoute element={<Requests />} />} />
+        </Route>
       </Routes>
       <ToastContainer />
     </BrowserRouter>
