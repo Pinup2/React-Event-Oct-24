@@ -6,11 +6,6 @@ type User = {
   isAuthorized: boolean,
 }
 
-type AuthPayload = {
-  token: string;
-  password: string;
-};
-
 const initialState: User = {
   token: null,
   isAuthorized: false,
@@ -20,8 +15,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthUser(state, { payload }: PayloadAction<AuthPayload>) {
-      state.token = payload.token;
+    setAuthUser(state, { payload }: PayloadAction<string>) {
+      state.token = payload;
     },
     setIsAuthorized(state, { payload }: PayloadAction<boolean>) {
       state.isAuthorized = payload;

@@ -5,6 +5,9 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { AppDispatch } from '../../store/createStore';
+import { setAuthUser } from '../../slice/authSlice'
+import { useDispatch } from 'react-redux';
 
 interface MyForm {
   login: string;
@@ -23,6 +26,7 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const dispatch = useDispatch<AppDispatch>();
 
   const {
     control,
@@ -45,12 +49,11 @@ const Login = () => {
   };
 
   const submit: SubmitHandler<MyForm> = async (data) => {
-    console.log(data);
-    resetForm();
     try {
       const response = await axios.post('https://natticharity.eveloth.ru/api/auth', data);
-      console.log(response.data);
-      
+      const token = response.data.token;
+      dispatch(setAuthUser(token));
+      resetForm();
     } catch (error) {
       console.log(error);
     }
