@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, LinearProgress } from '@mui/material';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Components/store'; 
 
 interface ContributionSidebarProps {
   requestId: string;
@@ -9,49 +12,54 @@ interface ContributionSidebarProps {
 export const ContributionSidebar: React.FC<ContributionSidebarProps> = ({ requestId }) => {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); 
+
+  const token = useSelector((state: RootState) => state.auth.token);  
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = import.meta.env.REACT_APP_API_TOKEN;
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiYzk5NDljLTc5NGYtNGUzNi1hMTJmLWMzZTlmMjE3OGRlMyIsImlhdCI6MTcyOTk2MDA4NCwiZXhwIjoxNzI5OTYzNjg0fQ._yHMS8WAz7K0P1086WLMQt126D0kOJuTTqlcffKmUtk";
-    if (!token) {
-      setError('Токен не найден');
-      return;
-    }
+
+      if (!token) {
+        setError('Токен не найден');
+        setLoading(false);  
+        return;
+      }
+
       try {
-        const response = await fetch(`https://natticharity.eveloth.ru/api/request/${requestId }`, {
-          method: 'GET',
+        console.log(`Fetching data for requestId: ${requestId}`);  
+        const response = await axios.get(`https://natticharity.eveloth.ru/api/request/${requestId}`, {
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json'
           },
+          timeout: 10000, 
         });
 
-        if (!response.ok) {
-          throw new Error('Ошибка при загрузке данных');
-        }
-
-        const result = await response.json();
-        setData(result);
+        setData(response.data);  
+        setLoading(false);  
       } catch (err: any) {
         setError(err.message);
+        setLoading(false); 
       }
     };
 
-    fetchData();
-  }, [requestId]);
+    if (requestId) {
+      fetchData(); 
+    } else {
+      setError('No request ID provided');
+      setLoading(false);
+    }
+  }, [requestId, token]);
 
   const handleContribute = () => {
     toast.success('Успех! Спасибо за помощь');
   };
 
-  if (error) {
-    return <p>Ошибка: {error}</p>;
+  if (loading) {
+    return <p>Загрузка...</p>;
   }
 
-  if (!data) {
-    return <p>Загрузка...</p>;
+  if (error) {
+    return <p>Ошибка: {error}</p>;
   }
 
   const collectedPercent = (data.requestGoalCurrentValue / data.requestGoal) * 100;
@@ -62,6 +70,7 @@ export const ContributionSidebar: React.FC<ContributionSidebarProps> = ({ reques
       <Typography variant="subtitle2">Цель сбора</Typography>
       <Typography>{data.goalDescription}</Typography>
 
+      {/* Progress bar */}
       <Box mt={2} mb={2}>
         <LinearProgress variant="determinate" value={collectedPercent} />
         <Box display="flex" justifyContent="space-between" mt={1}>

@@ -12,9 +12,9 @@ import { selectIsAuthorized } from './slice/authSlice';
 import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
-import ResponsePage from './Components/ResponsePage';
+import {ResponsePage} from './Components/ResponsePage';
 import HelpRequestDetails from './Components/HelpRequestDetails';
-import ContributionSidebar from './Components/ContributionSidebar';
+import {ContributionSidebar} from './Components/ContributionSidebar';
 import FavoriteButton from './Components/FavoriteButton';
 import 'react-toastify/dist/ReactToastify.css';
 import { Box } from '@mui/material';
@@ -51,8 +51,7 @@ export default App;
 
 const ResponsePageWrapper: React.FC = () => {
   const { requestId } = useParams<{ requestId: string }>();
-
-  return requestId ? (
+    return requestId ? (
     <Box
       sx={{
         display: 'flex',
@@ -63,7 +62,7 @@ const ResponsePageWrapper: React.FC = () => {
         padding: 2,
       }}
     >
-      <HelpRequestDetails id={requestId} />
+      <HelpRequestDetails/>
       <ContributionSidebar requestId={requestId} />
       <FavoriteButton isFavourite={false} />
     </Box>
