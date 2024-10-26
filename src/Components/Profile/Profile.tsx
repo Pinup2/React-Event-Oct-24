@@ -14,8 +14,7 @@ export default function Profile() {
         justifyContent: 'center'
       }}>
       <Box 
-        sx={{
-          width: "78.125%", 
+        sx={{ 
           bgcolor: grey[100],
           padding: "46px",
           border: "1px solid #0000001F"

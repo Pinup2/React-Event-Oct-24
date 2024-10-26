@@ -45,10 +45,12 @@ export default function InfoFavorites() {
         sx={{
           marginTop: "30px", 
           justifyContent: "center",
-          "& .Mui-selected": {
-            bgcolor: "#1E88E5",
-            color: "white"
-        }}}
+          "& .MuiPaginationItem-root": {
+            "&.Mui-selected": {
+              bgcolor: "#1E88E5",
+              color: "white"
+          }},
+        }}
       />
     </Stack>
   )
