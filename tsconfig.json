@@ -16,6 +16,6 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "charity_event_back_oct2024"],
+  "exclude": ["node_modules", "charity_event_back_oct2024"]
 }
