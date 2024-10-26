@@ -54,20 +54,27 @@ const Login = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh',
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
             flexGrow: 1,
           }}
         >
-          <Typography variant="h2">{'Авторизация'}</Typography>
-          <Typography variant="h3">{'Вход'}</Typography>
+          <Typography variant="h4" 
+          sx={{
+            mt: '64px',
+          }}>
+            {'Авторизация'}
+          </Typography>
+          <Typography variant="h5"
+          sx={{
+            mt: '90px',
+          }}>
+            {'Вход'}
+          </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit(submit)}
@@ -77,7 +84,7 @@ const Login = () => {
               alignItems: 'center',
               justifyContent: 'center',
               width: '485px',
-              m: 3,
+              mt: '35px',
             }}
           >
             <Box
@@ -94,8 +101,8 @@ const Login = () => {
                 render={({ field }) => (
                   <TextField
                   {...field}
-                  label="Введите e-mail"
-                  placeholder='Логин'
+                  label="Логин"
+                  placeholder='Введите e-mail'
                   variant="outlined"
                   error={!!errors.email}
                   helperText={errors.email ? 'Введите корректный email-адрес' : ''}
@@ -114,8 +121,8 @@ const Login = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Введите пароль"
-                    placeholder="Пароль"
+                    label="Пароль"
+                    placeholder="Введите пароль"
                     variant="outlined"
                     error={!!errors.password}
                     type={showPassword ? 'text' : 'password'}
@@ -142,7 +149,12 @@ const Login = () => {
               />
             </Box>
             <Button
-              sx={{ m: 1, p: 1, width: '100%', boxSizing: 'border-box' }}
+              sx={{ 
+                width: '100%',
+                boxSizing: 'border-box',
+                height: '42px',
+                mt: '40px'
+              }}
               color="primary"
               variant="contained"
               type="submit"
