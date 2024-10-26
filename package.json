@@ -45,6 +45,7 @@
     "ast-types-flow": "^0.0.8",
     "available-typed-arrays": "^1.0.7",
     "axe-core": "^4.10.2",
+    "axios": "^1.7.7",
     "axobject-query": "^4.1.0",
     "balanced-match": "^1.0.2",
     "brace-expansion": "^1.1.11",
@@ -240,7 +241,8 @@
     "which-typed-array": "^1.1.15",
     "word-wrap": "^1.2.5",
     "wrappy": "^1.0.2",
-    "yocto-queue": "^0.1.0"
+    "yocto-queue": "^0.1.0",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
