@@ -3,7 +3,7 @@ import { Box, Typography, Button, LinearProgress } from '@mui/material';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { RootState } from '../Components/store'; 
+import { RootState } from './store';
 
 interface ContributionSidebarProps {
   requestId: string;

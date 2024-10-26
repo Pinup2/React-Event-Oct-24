@@ -13,10 +13,10 @@ import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
 import RequestsPage from "./Components/RequestsPage/RequestsPage";
-import {ResponsePage} from './Components/ResponsePage';
-import HelpRequestDetails from './Components/HelpRequestDetails';
-import {ContributionSidebar} from './Components/ContributionSidebar';
-import FavoriteButton from './Components/FavoriteButton';
+import {ResponsePage} from './Components/HelpRequestPage/ResponsePage';
+import HelpRequestDetails from './Components/HelpRequestPage/HelpRequestDetails';
+import {ContributionSidebar} from './Components/HelpRequestPage/ContributionSidebar';
+import FavoriteButton from './Components/HelpRequestPage/FavoriteButton';
 import 'react-toastify/dist/ReactToastify.css';
 import { Box } from '@mui/material';
 
