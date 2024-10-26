@@ -26,14 +26,14 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
 
 const App = () => (
   <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<AuthPage />} />
-          <Route path="/" element={<ProtectedRoute element={<ResponsepPage />} />} />
-        </Routes>
-        <ToastContainer />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/" element={<ProtectedRoute element={<ResponsepPage />} />} />
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
+  </Provider>
 );
 
 export default App;
