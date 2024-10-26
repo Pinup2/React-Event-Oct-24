@@ -8,6 +8,7 @@ import axios from 'axios';
 import { AppDispatch } from '../../store/createStore';
 import { setAuthUser,setIsAuthorized } from '../../slice/authSlice'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface MyForm {
   login: string;
@@ -27,6 +28,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const {
     control,
@@ -54,7 +56,8 @@ const Login = () => {
       const token = response.data.token;
       const isAuthorized = response.data.auth;
       dispatch(setAuthUser(token));
-      dispatch(setIsAuthorized(isAuthorized))
+      dispatch(setIsAuthorized(isAuthorized));
+      navigate('/');
       resetForm();
     } catch (error) {
       console.log(error);
