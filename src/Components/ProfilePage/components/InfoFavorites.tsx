@@ -11,7 +11,7 @@ type favProps = {
 }
 
 export default function InfoFavorites({ favouriteRequests } : favProps) {
-  const favArr = Array.from(Array(10).keys());
+  const favArr = Array.from(Array(5).keys());
   const token = useSelector((state:RootState) => state.auth.token);
   const view = useSelector((state:RootState) => state.auth.view);
   const [ page, setPage ] = useState<number>(1);
@@ -53,13 +53,13 @@ export default function InfoFavorites({ favouriteRequests } : favProps) {
       <Stack direction="row" spacing="24px" sx={{width: "100%"}}>
         {currentCards.map((card) => <RequestCard
           id="1"
-          title="title" 
-          organization={{title: "org", isVerified: true}}
-          location={{latitude: 3, longitude: 3, district: "district", city: "city"}}
-          goalDescription="goalDescription"
+          title="Заголовок" 
+          organization={{title: "Имя организации", isVerified: true}}
+          location={{latitude: 3, longitude: 3, district: "Имя области", city: "Имя города"}}
+          goalDescription="Цель сбора средств"
           requesterType="person"
           helpType="finance"
-          endingDate="date"
+          endingDate="2011-10-10T14:48:00.000+09:00"
           requestGoal={10}
           requestGoalCurrentValue={5}
           onClick={() => console.log('click')}
@@ -68,13 +68,13 @@ export default function InfoFavorites({ favouriteRequests } : favProps) {
       <Stack direction="column" sx={{width: "100%"}}>
         {currentCards.map((card) => <RequestCardVariant
           id="1"
-          title="title" 
-          organization={{title: "org", isVerified: true}}
-          location={{latitude: 3, longitude: 3, district: "district", city: "city"}}
-          goalDescription="goalDescription"
+          title="Заголовок" 
+          organization={{title: "Имя организации", isVerified: true}}
+          location={{latitude: 3, longitude: 3, district: "Имя области", city: "Имя города"}}
+          goalDescription="Цель сбора средств"
           requesterType="person"
           helpType="finance"
-          endingDate="date"
+          endingDate="2011-10-10T14:48:00.000+09:00"
           requestGoal={10}
           requestGoalCurrentValue={5}
           onClick={() => console.log('click')}

@@ -1,14 +1,9 @@
 import Card from '@mui/material/Card';
 import {Typography, Box, Stack} from '@mui/material';
-import Divider from '@mui/material/Divider';
+import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
 
-
-import selectedButton from './assets/_IconButton_selected.svg'
-import unselectedButton from './assets/_IconButton_.svg'
-
-import styles from './styles.module.css'
 import {calculateProgress, formatDateString, imageSelector} from "./helpers";
 import { useNavigate} from "react-router-dom";
 
@@ -71,7 +66,7 @@ export const RequestCardVariant = ({ title,
 
 
   return (
-      <Card onClick={() => navigate(`/request/${id}`)} sx={{width: "100%", padding: "20px", borderBottom: "1px solid #0000001F"}} elevation={0}>
+      <Card onClick={() => navigate(`/request/${id}`)} sx={{padding: "20px", borderBottom: "1px solid #0000001F"}} elevation={0}>
         <Stack direction="row" justifyContent="space-between">
 
           <Stack gap="30px" sx={{width: "25%"}}>
@@ -136,7 +131,26 @@ export const RequestCardVariant = ({ title,
             </Box>
           </Stack>
 
-          <Button size="small" sx={{height: "28px", width: "15%"}} variant="outlined" onClick={() => console.log('added')}>В избранное</Button>
+          <Button 
+            disableRipple
+            disableFocusRipple
+            disableTouchRipple
+            startIcon={<StarIcon/>}
+            size="small" 
+            sx={{
+              height: "28px", 
+              width: "15%", 
+              fontSize: "12px",
+              color: "#00000099",
+              fontWeight: "bold",
+              bgcolor: "#00000000",
+              borderColor: "#0000001F",
+              textDecoration: "none",
+            }} 
+            variant="outlined" 
+            onClick={() => console.log('added')}>
+              В избранное
+            </Button>
         </Stack>
       </Card>
   )

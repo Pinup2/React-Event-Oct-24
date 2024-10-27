@@ -16,7 +16,9 @@ export default function PersonalProfile({ educations } : eduProps) {
     <Box>
       <Header name="Образование"/>
       <Stack gap="16px">
-        {educations && educations.map((edu) => <EduOrganisation 
+        {educations && educations.map((edu) => 
+        <EduOrganisation 
+          key={educations.indexOf(edu)}
           name={edu.organizationName} 
           level={edu.level}
           specialization={edu.specialization}
