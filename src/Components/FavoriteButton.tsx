@@ -4,12 +4,11 @@ import { css } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavourites, removeFromFavourites } from './FavouriteSlice';
 import { toast } from 'react-toastify';
-import { RootState } from '../Components/store'; 
-
+import { RootState } from '../Components/FavouriteSlice';
 
 interface FavoriteButtonProps {
   requestId: string;
-  // isFavourite: boolean;
+  isFavourite: boolean;  // This is the prop you are passing
 }
 
 const buttonStyle = css`
@@ -31,12 +30,10 @@ const iconStyle = (isFavourite: boolean) => css`
   }
 `;
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = ({ requestId }) => {
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({ requestId, isFavourite }) => {
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state.auth.token);
-
   const favourites = useSelector((state: RootState) => state.favourites.favourites);
-  const isFavourite = favourites.includes(requestId);
 
   const handleToggleFavorite = () => {
     if (!token) {
@@ -53,15 +50,16 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ requestId }) => {
         .then(() => toast.success('Успех! Добавлено в избранное'))
         .catch(() => toast.error('Ошибка при добавлении'));
     }
-  }; 
+  };
+
   return (
     <>
-     <div>
-      {isFavorite ? 'This item is in your favorites!' : 'Not a favorite yet.'}
-    </div>
-    <IconButton css={buttonStyle}   onClick={handleToggleFavorite}>
-      <FavoriteIcon css={iconStyle(isFavourite)} />
-    </IconButton>
+      <div>
+        {isFavourite ? 'This item is in your favorites!' : 'Not a favorite yet.'}
+      </div>
+      <IconButton css={buttonStyle} onClick={handleToggleFavorite}>
+        <FavoriteIcon css={iconStyle(isFavourite)} />
+      </IconButton>
     </>
   );
 };

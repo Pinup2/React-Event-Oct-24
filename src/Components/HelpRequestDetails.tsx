@@ -4,7 +4,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import { useSelector } from 'react-redux';
-import { RootState } from '../Components/store';  
+import { RootState } from '../store/createStore';  
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
