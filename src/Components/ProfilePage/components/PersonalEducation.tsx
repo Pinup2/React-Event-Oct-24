@@ -1,14 +1,27 @@
-import { Box, Stack } from "@mui/material"
-import EduOrganisation from "./EduOrganisation"
-import Header from "./Header"
+import { Box, Stack } from "@mui/material";
+import EduOrganisation from "./EduOrganisation";
+import Header from "./Header";
 
-export default function PersonalProfile() {
+type eduProps = {
+  educations: {
+    organizationName: string,
+    level: string,
+    specialization?: string,
+    graduationYear: number
+  }[]
+}
+
+export default function PersonalProfile({ educations } : eduProps) {
   return (
     <Box>
       <Header name="Образование"/>
       <Stack gap="16px">
-        <EduOrganisation university={false}/>
-        <EduOrganisation university={true}/>
+        {educations && educations.map((edu) => <EduOrganisation 
+          name={edu.organizationName} 
+          level={edu.level}
+          specialization={edu.specialization}
+          year={edu.graduationYear}
+        />)}
       </Stack>
     </Box>
   )

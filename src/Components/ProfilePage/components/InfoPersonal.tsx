@@ -4,15 +4,22 @@ import PersonalBirthday from "./PersonalBirtday"
 import PersonalLocations from "./PersonalLocations"
 import PersonalEducation from "./PersonalEducation"
 import PersonalAbout from "./PersonalAbout"
+import userDetails from "../userDetails"
 
-export default function InfoPersonal() {
+type dataProps = {
+  data: userDetails,
+}
+
+export default function InfoPersonal({ data } : dataProps) {
+  const { name, lastName, birthdate, baseLocations, educations, additionalInfo } = data;
+
   return (
     <Stack sx={{width: "51%"}} gap="30px" direction="column">
-      <PersonalProfile />
-      <PersonalBirthday />
-      <PersonalLocations />
-      <PersonalEducation />
-      <PersonalAbout />
+      <PersonalProfile name={name} lastName={lastName}/>
+      <PersonalBirthday birthdate={birthdate}/>
+      <PersonalLocations baseLocations={baseLocations}/>
+      <PersonalEducation educations={educations}/>
+      <PersonalAbout additionalInfo={additionalInfo}/>
     </Stack>
   )
 }

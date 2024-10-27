@@ -4,8 +4,14 @@ import InfoNavigation from "./components/InfoNavigation"
 import InfoPersonal from "./components/InfoPersonal"
 import InfoContacts from "./components/InfoContacts"
 import InfoFavorites from "./components/InfoFavorites"
+import userDetails from "./userDetails"
 
-export default function InfoCard() {
+type dataProps = {
+  data: userDetails,
+};
+
+export default function InfoCard({data } : dataProps) {
+  const { contacts, favouriteRequests } = data;
   const sections = ["pers", "cont", "fav"];
   const [ section, setSection ] = useState<string>(sections[0]);
 
@@ -24,9 +30,9 @@ export default function InfoCard() {
       }}>
       <InfoNavigation firstSection={sections[0]} changeSection={changeSection}/>
       <Box sx={{padding: "24px"}}>
-        {section === "pers" && <InfoPersonal />}
-        {section === "cont" && <InfoContacts />}
-        {section === "fav" && <InfoFavorites />}
+        {section === "pers" && <InfoPersonal data={data}/>}
+        {section === "cont" && <InfoContacts contacts={contacts}/>}
+        {section === "fav" && <InfoFavorites favouriteRequests={favouriteRequests}/>}
       </Box>
     </Paper>
   )

@@ -1,12 +1,12 @@
 import { Box, Stack, Typography } from "@mui/material"
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store/createStore";
-import userDetails from "../userDetails";
 import Header from "./Header"
 
-export default function PersonalProfile() {
-  const data = useSelector((state:RootState) => state.auth.userData) as userDetails;
-  const { name, lastName } : userDetails = data;
+type detailsProps = {
+  name: string,
+  lastName: string,
+}
+
+export default function PersonalProfile({ name, lastName } : detailsProps) {
 
   return (
     <Box>

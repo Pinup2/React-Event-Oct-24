@@ -1,8 +1,15 @@
 import { Paper} from "@mui/material"
 import UserText from "./components/UserText"
+import userDetails from "./userDetails"
 import avatar from "../../assets/CardMedia_.png"
 
-export default function UserCard() {
+type DataProps = {
+  data: userDetails,
+}
+
+export default function UserCard({ data } : DataProps) {
+  const { name, lastName, status } = data;
+
   return (
     <Paper component="aside" elevation={0}
       sx={{
@@ -12,7 +19,7 @@ export default function UserCard() {
         border: "1px solid #0000001F"
       }}>
       <img className="user_avatar" src={avatar} alt="аватар пользователя"/>
-      <UserText />
+      <UserText name={name} lastName={lastName} status={status}/>
     </Paper>
   )
 }

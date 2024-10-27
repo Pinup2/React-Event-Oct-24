@@ -1,19 +1,22 @@
 import { Box, Stack } from "@mui/material"
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store/createStore";
-import userDetails from "../userDetails";
-import Location from "./Location"
-import Header from "./Header"
+import Location from "./Location";
+import Header from "./Header";
 
-export default function PersonalProfile() {
-  const data = useSelector((state:RootState) => state.auth.userData) as userDetails;
-  const { baseLocations } : userDetails = data;
+type locationProps = {
+  baseLocations: {
+    latitude: number,
+    longitude: number,
+    district: string,
+    city: string,
+  }[],
+}
 
+export default function PersonalProfile({ baseLocations } : locationProps) {
   return (
     <Box>
       <Header name="Локации для помощи"/>
       <Stack gap="16px">
-        {baseLocations.map((loc) => <Location district={loc.district} city={loc.city}/>)}
+        {baseLocations && baseLocations.map((loc) => <Location district={loc.district} city={loc.city}/>)}
       </Stack>
     </Box>
   )

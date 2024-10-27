@@ -1,17 +1,17 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { grey } from "@mui/material/colors";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import userDetails from "./userDetails";
 import { RootState } from "../../store/createStore";
-import { setUserData } from "../../slice/authSlice";
 import axios from 'axios';
 import UserCard from "./UserCard"
 import InfoCard from "./InfoCard"
 import "./ProfilePage.css"
 
 export default function Profile() {
+  const [ data, setData ] = useState<userDetails | {}>({});
   const token = useSelector((state:RootState) => state.auth.token);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +22,7 @@ export default function Profile() {
           }
         });
         console.log(response.data);
-        if (Object.keys(response.data).length > 0) dispatch(setUserData(response.data));
+        setData(response.data);
       } catch (error) {
         // eslint-disable-next-line no-undef
         console.error("Ошибка при загрузке данных с сервера:", error);
@@ -43,12 +43,13 @@ export default function Profile() {
         sx={{ 
           bgcolor: grey[100],
           padding: "46px",
+          width: '78.125%',
           border: "1px solid #0000001F"
         }}>
         <Typography variant="h4" component="h1">Мой профиль</Typography>
         <Stack direction="row" spacing="20px" sx={{marginTop: "46px"}}>
-          <UserCard />
-          <InfoCard />
+          <UserCard data={data}/>
+          <InfoCard data={data}/>
         </Stack>
       </Box>
     </Box>

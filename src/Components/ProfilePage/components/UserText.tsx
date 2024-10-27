@@ -1,12 +1,13 @@
 import { Box, Button, Stack, Typography } from "@mui/material"
-import { useSelector } from "react-redux"
-import { RootState } from "../../../store/createStore";
-import userDetails from "../userDetails";
 import Header from "./Header"
 
-export default function UserText() {
-  const data = useSelector((state:RootState) => state.auth.userData) as userDetails;
-  const { name, lastName, status } : userDetails = data;
+type TextProps = {
+  name: string,
+  lastName: string,
+  status: string,
+}
+
+export default function UserText({ name, lastName, status } : TextProps) {
 
   return (
     <Box sx={{padding: "20px", borderTop: "1px solid #0000001F"}}>

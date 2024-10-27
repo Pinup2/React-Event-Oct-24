@@ -16,7 +16,7 @@ export default function Location({ district, city } : LocationProps) {
             Область: 
         </Typography>
         <Typography variant="subtitle2">
-          Область
+          {district}
         </Typography>
       </Stack>
       <Stack gap="5px" direction="row">
@@ -26,7 +26,7 @@ export default function Location({ district, city } : LocationProps) {
             Населенный пункт: 
         </Typography>
         <Typography variant="subtitle2">
-          Пункт
+          {city}
         </Typography>
       </Stack>
     </Box>

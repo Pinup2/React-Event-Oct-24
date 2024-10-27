@@ -1,14 +1,20 @@
-import { Box } from "@mui/material"
-import Header from "./Header"
-import Social from "./Social"
+import { Box } from "@mui/material";
+import Header from "./Header";
+import Social from "./Social";
 
-export default function ContactsSocials() {
+type contactProps = {
+  social: {
+    telegram: string,
+    whatsapp: string,
+    vk: string,
+  }
+}
+
+export default function ContactsSocials({ social } : contactProps) {
   return (
     <Box>
       <Header name="Социальные сети"/>
-        <Social type="vk" value="Vkontakte"/>
-        <Social type="telegram" value="Telegram"/>
-        <Social type="whatsapp" value="Whatsapp"/>
+        {Object.keys(social).map((key) => <Social type={key} value={social[key]}/>)}
     </Box>
   )
 }
