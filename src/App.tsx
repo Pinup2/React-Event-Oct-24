@@ -47,3 +47,30 @@ const App = () => (
 );
 
 export default App;
+
+const ResponsePageWrapper: React.FC = () => {
+  const { requestId } = useParams<{ requestId: string }>();
+
+  const favourites = useSelector((state: RootState) => state.favourites.favourites);
+
+  const isFavourite = requestId ? favourites.includes(requestId) : false;
+
+  return requestId ? (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        gap: 2,
+        padding: 2,
+      }}
+    >
+      <HelpRequestDetails />
+      <ContributionSidebar requestId={requestId} />
+      <FavoriteButton requestId={requestId} isFavourite={isFavourite} />
+    </Box>
+  ) : (
+    <p>Request ID not found</p>
+  );
+};

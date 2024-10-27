@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { addToFavourites, removeFromFavourites } from './FavouriteSlice';
 import { toast } from 'react-toastify';
 
-const FavoriteButton = ({ requestId, isFavourite }: any) => {
+
+const FavoriteButton = ({ requestId, isFavourite }) => {
   const dispatch = useDispatch();
 
   const handleToggleFavorite = () => {
