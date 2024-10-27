@@ -17,7 +17,7 @@ export const addToFavourites = createAsyncThunk(
   'favourites/addToFavourites',
   async ({ requestId, token }: { requestId: string; token: string }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`http://localhost:4040/api/user/favourites`, { requestId }, {
+      const response = await axios.post(`http://localhost:4040/api-docs/#/default/post_api_user_favourites`, { requestId }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -34,7 +34,7 @@ export const removeFromFavourites = createAsyncThunk(
   'favourites/removeFromFavourites',
   async ({ requestId, token }: { requestId: string; token: string }, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`http://localhost:4040/api/user/favourites/${requestId}`, {
+      const response = await axios.delete(`http://localhost:4040/api-docs/#/default/post_api_user_favourites${requestId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

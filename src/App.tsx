@@ -70,7 +70,7 @@ const ResponsePageWrapper: React.FC = () => {
       <HelpRequestDetails />
       <ContributionSidebar requestId={requestId} />
       <FavoriteButton requestId={requestId} isFavourite={isFavourite} />
-    </Box>
+          </Box>
   ) : (
     <p>Request ID not found</p>
   );

@@ -8,7 +8,7 @@ import { RootState } from '../Components/FavouriteSlice';
 
 interface FavoriteButtonProps {
   requestId: string;
-  isFavourite: boolean;  // This is the prop you are passing
+  isFavourite: boolean; 
 }
 
 const buttonStyle = css`

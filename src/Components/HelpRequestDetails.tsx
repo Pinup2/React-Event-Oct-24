@@ -26,7 +26,6 @@ const HelpRequestDetails: React.FC = () => {
       }
 
       try {
-        console.log(`Making request to: https://natticharity.eveloth.ru/api/request/${id}`);  
         const response = await axios.get(`https://natticharity.eveloth.ru/api/request/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
