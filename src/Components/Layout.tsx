@@ -9,7 +9,7 @@ const Layout = () => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      height: '100vh',
+      minHeight: '100vh',
       pl: '210px',
       pr: '210px',
     }}

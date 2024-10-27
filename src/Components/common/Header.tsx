@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, } from "@mui/material";
+import { Box, Typography, Button, Link } from "@mui/material";
 import iconHeader from "../../assets/iconHeader.svg";
 import { useSelector } from "react-redux";
 import { selectIsAuthorized } from '../../slice/authSlice';
@@ -50,10 +50,10 @@ const Header = () => {
       }}
     >
       <Box>
-        <img src={iconHeader} style={{ width: "224px" }} alt="Icon Header" />
+        <img src={iconHeader} style={{ width: "224px", cursor: "pointer"}} alt="Icon Header" />
       </Box>
       <Box display="flex" justifyContent="center">
-        <Typography>Запросы о помощи</Typography>
+        <Typography sx={{cursor: "pointer"}}>Запросы о помощи</Typography>
       </Box>
       {isAuthorized ?
          <Box display="flex" justifyContent="flex-end">
