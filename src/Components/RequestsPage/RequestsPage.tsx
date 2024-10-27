@@ -21,6 +21,7 @@ export default function RequestsPage() {
         paginateData(page).map((item) => (
           <RequestCard
             key={item.id}
+            id={item.id}
             title={item.title}
             goalDescription={item.goalDescription}
             requestGoalCurrentValue={item.requestGoalCurrentValue}
