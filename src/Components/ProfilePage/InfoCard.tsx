@@ -30,7 +30,7 @@ export default function InfoCard({ data } : dataProps) {
         border: "1px solid #0000001F"
       }}>
       <InfoNavigation firstSection={sections[0]} changeSection={changeSection}/>
-      <Box sx={{padding: "24px"}}>
+      <Box>
         {section === "pers" && <InfoPersonal data={data}/>}
         {section === "cont" && <InfoContacts contacts={contacts}/>}
         {section === "fav" && <InfoFavorites favouriteRequests={favouriteRequests}/>}

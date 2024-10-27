@@ -14,7 +14,7 @@ export default function InfoPersonal({ data } : dataProps) {
   const { name, lastName, birthdate, baseLocations, educations, additionalInfo } = data;
 
   return (
-    <Stack sx={{width: "51%"}} gap="30px" direction="column">
+    <Stack sx={{width: "51%", padding: "24px"}} gap="30px" direction="column">
       <PersonalProfile name={name} lastName={lastName}/>
       <PersonalBirthday birthdate={birthdate}/>
       <PersonalLocations baseLocations={baseLocations}/>

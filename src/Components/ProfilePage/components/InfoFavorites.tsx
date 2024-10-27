@@ -11,7 +11,7 @@ type favProps = {
 }
 
 export default function InfoFavorites({ favouriteRequests } : favProps) {
-  const favArr = Array.from(Array(5).keys());
+  const favArr = Array.from(Array(10).keys());
   const token = useSelector((state:RootState) => state.auth.token);
   const view = useSelector((state:RootState) => state.auth.view);
   const [ page, setPage ] = useState<number>(1);
@@ -48,9 +48,9 @@ export default function InfoFavorites({ favouriteRequests } : favProps) {
   }, [token]);
 
   return (
-    <Stack direction="column" alignItems="center">
+    <Stack direction="column" alignItems="center" sx={{paddingBlock: "24px"}}>
       {view === "grid" ? 
-      <Stack direction="row" spacing="24px" sx={{width: "100%"}}>
+      <Stack direction="row" sx={{width: "100%", gap: "24px", justifyContent: "start"}}>
         {currentCards.map((card) => <RequestCard
           id="1"
           title="Заголовок" 
