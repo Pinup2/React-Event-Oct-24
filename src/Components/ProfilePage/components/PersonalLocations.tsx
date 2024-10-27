@@ -16,7 +16,11 @@ export default function PersonalProfile({ baseLocations } : locationProps) {
     <Box>
       <Header name="Локации для помощи"/>
       <Stack gap="16px">
-        {baseLocations && baseLocations.map((loc) => <Location district={loc.district} city={loc.city}/>)}
+        {baseLocations && baseLocations.map((loc) => <Location 
+          key={baseLocations.indexOf(loc)} 
+          district={loc.district} 
+          city={loc.city}/>
+        )}
       </Stack>
     </Box>
   )

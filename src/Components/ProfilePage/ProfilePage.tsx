@@ -7,9 +7,11 @@ import { RootState } from "../../store/createStore";
 import axios from 'axios';
 import UserCard from "./UserCard"
 import InfoCard from "./InfoCard"
+import errorImg from "../../assets/Container.png"
 import "./ProfilePage.css"
 
 export default function Profile() {
+  const [ error, setError ] = useState<boolean>(false);
   const [ data, setData ] = useState<userDetails>({
     id: "",
     name: "",
@@ -51,11 +53,11 @@ export default function Profile() {
             Authorization: `Bearer ${token}`
           }
         });
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         // eslint-disable-next-line no-undef
         console.error("Ошибка при загрузке данных с сервера:", error);
+        setError(true);
       }
     };
     fetchData();
@@ -77,10 +79,14 @@ export default function Profile() {
           border: "1px solid #0000001F"
         }}>
         <Typography variant="h4" component="h1">Мой профиль</Typography>
+        {error ? 
+        <Box sx={{}}>
+          <img src={errorImg} style={{width: "100%"}}/>
+        </Box> :
         <Stack direction="row" spacing="20px" sx={{marginTop: "46px"}}>
           <UserCard data={data}/>
           <InfoCard data={data}/>
-        </Stack>
+        </Stack>}
       </Box>
     </Box>
   )
