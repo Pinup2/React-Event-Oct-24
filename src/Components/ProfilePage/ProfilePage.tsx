@@ -10,7 +10,37 @@ import InfoCard from "./InfoCard"
 import "./ProfilePage.css"
 
 export default function Profile() {
-  const [ data, setData ] = useState<userDetails>({});
+  const [ data, setData ] = useState<userDetails>({
+    id: "",
+    name: "",
+    lastName: "",
+    birthdate: "",
+    status: "",
+    baseLocations: [{
+      latitude: 0,
+      longitude: 0,
+      district: "",
+      city: "",
+    }],
+    educations: [{
+      organizationName: "",
+      level: "",
+      specialization: "",
+      graduationYear: 0
+    }],
+    additionalInfo: "",
+    contacts: {
+      email: "",
+          phone: "",
+          social: {
+              telegram: "",
+              whatsapp: "",
+              vk: "",
+          }
+    },
+    favouriteRequests: []
+  });
+  
   const token = useSelector((state:RootState) => state.auth.token);
 
   useEffect(() => {

@@ -13,7 +13,7 @@ type userDetails = {
   educations: {
     organizationName: string,
     level: string,
-    specialization?: string,
+    specialization: string,
     graduationYear: number
 }[],
   additionalInfo: string,
