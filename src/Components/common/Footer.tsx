@@ -9,6 +9,7 @@ const Footer = () => {
         gridTemplateColumns: '1fr 1fr 1fr',
         alignItems: 'center',
         height: '152px',
+
       }}
     >
       <Link
@@ -20,6 +21,8 @@ const Footer = () => {
           color: 'black',
           fontFamily: 'Roboto, sans-serif',
           textAlign: 'center',
+          marginBottom:'64px',
+          marginTop:'10px'
         }}
       >
         Об ивенте
@@ -31,6 +34,8 @@ const Footer = () => {
           color: 'black',
           fontFamily: 'Roboto, sans-serif',
           textAlign: 'center',
+          marginBottom:'64px',
+
         }}
       >
         Github проекта
@@ -44,6 +49,8 @@ const Footer = () => {
           color: 'black',
           fontFamily: 'Roboto, sans-serif',
           textAlign: 'center',
+          marginBottom:'64px',
+
         }}
       >
         Чат для джунов
