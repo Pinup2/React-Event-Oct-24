@@ -26,10 +26,10 @@ const iconStyle = (isFavourite: boolean) => css`
   }
 `;
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = ({
+const FavoriteButton = ({
   isFavourite,
   onClick,
-}) => {
+}: FavoriteButtonProps) => {
   return (
     <IconButton css={buttonStyle} onClick={onClick}>
       <FavoriteIcon css={iconStyle(isFavourite)} />

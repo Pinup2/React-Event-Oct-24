@@ -1,11 +1,10 @@
-import React from 'react';
 import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToFavourites, removeFromFavourites } from './FavouriteSlice';
 import { toast } from 'react-toastify';
 
-const FavoriteButton = ({ requestId, isFavourite }) => {
+const FavoriteButton = ({ requestId, isFavourite }: any) => {
   const dispatch = useDispatch();
 
   const handleToggleFavorite = () => {
