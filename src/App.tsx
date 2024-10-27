@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage'
+import Layout from './Components/Layout';
 import RequestsPage from "./Components/RequestsPage/RequestsPage";
 import 'react-toastify/dist/ReactToastify.css';
 import {HelpRequestPage} from "./Components/HelpRequestPage/HelpRequestPage";
@@ -30,15 +31,18 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<AuthPage />} />
-        <Route
-          path="/request/:requestId"
-          element={<ProtectedRoute element={<HelpRequestPage />} />}
-        />
-        <Route path="/" element={<ProtectedRoute element={<RequestsPage />} />} />
-        <Route path="/user" element={<ProtectedRoute element={<ProfilePage />} />} />
+
+        <Route path="/" element={<Layout />}>
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/profile" element={<ProfilePage />}/>
+          <Route
+            path="/request/:requestId"
+            element={<ProtectedRoute element={<HelpRequestPage />} />}
+          />
+          <Route path="/" element={<ProtectedRoute element={<RequestsPage />} />} />
+        </Route>
       </Routes>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" theme="colored"/>
     </BrowserRouter>
   </Provider>
 );
