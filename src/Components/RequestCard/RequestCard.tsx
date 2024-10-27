@@ -10,9 +10,11 @@ import unselectedButton from './assets/_IconButton_.svg'
 
 import styles from './styles.module.css'
 import {calculateProgress, formatDateString, imageSelector} from "./helpers";
+import { useNavigate} from "react-router-dom";
 
 type RequestCardPropsType = {
   title: string;
+  id: string;
   organization: {
     title: string,
     isVerified: boolean
@@ -34,6 +36,7 @@ type RequestCardPropsType = {
 
 
 export const RequestCard = ({ title,
+                              id,
                               organization,
                               location,
                               goalDescription,
@@ -45,6 +48,7 @@ export const RequestCard = ({ title,
                               requestGoalCurrentValue}: RequestCardPropsType) => {
   // TODO убрать isClicked
   const isClicked = true;
+  const navigate = useNavigate();
   // TODO пример мапинга — удалить после использования
   // <div style={{display: 'flex', gap: '16px'}}>
   //   {requestCardMock.map(card => {
@@ -67,7 +71,7 @@ export const RequestCard = ({ title,
 
 
   return (
-      <Card className={styles.card}>
+      <Card className={styles.card} onClick={() => navigate(`/request/${id}`)}>
         <div style={{padding: '16px'}}>
           <img src={imageSelector(requesterType, helpType)} alt="card image" style={{height: '220px'}} />
           <div className={styles.titleContainer}>
@@ -79,8 +83,6 @@ export const RequestCard = ({ title,
         </div>
 
         <Divider orientation="horizontal" />
-
-
 
         <div className={styles.container}>
 
