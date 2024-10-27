@@ -64,7 +64,7 @@ export default function Requests() {
       "flex direction": 'column',
       gap:'24px',
       position:'relative',
-      'justify-content':'center'
+      justifyСontent:'center'
     }}>
       {paginateData(page).length > 0 ? (
         paginateData(page).map((item) => (

@@ -21,10 +21,14 @@ const authSlice = createSlice({
     setIsAuthorized(state, { payload }: PayloadAction<boolean>) {
       state.isAuthorized = payload;
     },
+    clearAuthState(state) {
+      state.token = null;
+      state.isAuthorized = false;
+    },
   },
 });
 
-export const { setAuthUser, setIsAuthorized } = authSlice.actions;
+export const { setAuthUser, setIsAuthorized, clearAuthState } = authSlice.actions;
 export const selectIsAuthorized = (state: RootState) => state.auth.isAuthorized;
 export const selectSetAuthUser = (state: RootState) => state.auth.token;
 export default authSlice.reducer;
