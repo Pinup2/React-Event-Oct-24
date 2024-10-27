@@ -4,13 +4,16 @@ import { useSelector } from "react-redux";
 import axios from 'axios';
 import { RootState } from "../../../store/createStore";
 import { RequestCard } from "../../RequestCard/RequestCard";
+import { RequestCardVariant } from "../../RequestCard/RequestCardVariant";
 
 type favProps = {
   favouriteRequests: [],
 }
 
 export default function InfoFavorites({ favouriteRequests } : favProps) {
+  const favArr = Array.from(Array(10).keys());
   const token = useSelector((state:RootState) => state.auth.token);
+  const view = useSelector((state:RootState) => state.auth.view);
   const [ page, setPage ] = useState<number>(1);
   const [ currentCards, setCurrentCards ] = useState<number[]>([]);
   const cardsPerPage = 3;
@@ -19,7 +22,7 @@ export default function InfoFavorites({ favouriteRequests } : favProps) {
   const firsCardIndex = lastCardsIndex - cardsPerPage; 
 
   useEffect(() => {
-    const currentCards = favouriteRequests.slice(firsCardIndex, lastCardsIndex);
+    const currentCards = favArr.slice(firsCardIndex, lastCardsIndex);
     setCurrentCards(currentCards);
   }, [page])
 
@@ -46,6 +49,7 @@ export default function InfoFavorites({ favouriteRequests } : favProps) {
 
   return (
     <Stack direction="column" alignItems="center">
+      {view === "grid" ? 
       <Stack direction="row" spacing="24px" sx={{width: "100%"}}>
         {currentCards.map((card) => <RequestCard
           id="1"
@@ -60,10 +64,26 @@ export default function InfoFavorites({ favouriteRequests } : favProps) {
           requestGoalCurrentValue={5}
           onClick={() => console.log('click')}
           />)}
-      </Stack>
-      {favouriteRequests.length > 0 && <Pagination
+      </Stack> : 
+      <Stack direction="column" sx={{width: "100%"}}>
+        {currentCards.map((card) => <RequestCardVariant
+          id="1"
+          title="title" 
+          organization={{title: "org", isVerified: true}}
+          location={{latitude: 3, longitude: 3, district: "district", city: "city"}}
+          goalDescription="goalDescription"
+          requesterType="person"
+          helpType="finance"
+          endingDate="date"
+          requestGoal={10}
+          requestGoalCurrentValue={5}
+          onClick={() => console.log('click')}
+        />)}
+      </Stack>}
+      
+      {favArr.length > 0 && <Pagination
         onChange={turnPage} 
-        count={Math.ceil(favouriteRequests.length / cardsPerPage)}
+        count={Math.ceil(favArr.length / cardsPerPage)}
         size="large"
         page={page}
         sx={{

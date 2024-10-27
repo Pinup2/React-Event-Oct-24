@@ -23,6 +23,7 @@ export default function InfoCard({ data } : dataProps) {
   return (
     <Paper component="main" elevation={0} 
       sx={{
+        minHeight: "calc(100vh - 236px)",
         width: "78.6%", 
         bgcolor: "white", 
         padding: "20px",

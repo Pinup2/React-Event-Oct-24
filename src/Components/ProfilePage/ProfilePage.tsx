@@ -40,7 +40,7 @@ export default function Profile() {
     },
     favouriteRequests: []
   });
-  
+
   const token = useSelector((state:RootState) => state.auth.token);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function Profile() {
         justifyContent: 'center'
       }}>
       <Box 
-        sx={{ 
+        sx={{
           bgcolor: grey[100],
           padding: "46px",
           width: '78.125%',
