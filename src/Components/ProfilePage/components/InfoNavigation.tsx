@@ -1,4 +1,4 @@
-import { Toolbar, ToggleButtonGroup } from "@mui/material"
+import { ToggleButtonGroup, Stack } from "@mui/material"
 import { useState } from "react"
 import NavButton from "./NavButton"
 import ViewIcons from "./ViewIcons"
@@ -17,12 +17,13 @@ export default function InfoNavigation({ firstSection, changeSection } : InfoNav
   }
 
   return (
-    <Toolbar>
+    <Stack direction="row" sx={{justifyContent: "space-between"}}>
       <ToggleButtonGroup sx={{textDecoration: "capitalize"}} value={section} onChange={handlePress} exclusive>
         <NavButton name="Личные данные" value="pers"/>
         <NavButton name="Контакты" value="cont"/>
         <NavButton name="Избранное" value="fav"/>
       </ToggleButtonGroup>
-    </Toolbar>
+      {section === "fav" && <ViewIcons />}
+    </Stack>
   )
 }
