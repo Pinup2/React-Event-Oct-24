@@ -40,7 +40,8 @@ export const useRequestsController = () => {
 
         setData(response.data);
         setFilteredItems(response.data);
-        setPageCount(7)
+        setPageCount(7);
+        setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
