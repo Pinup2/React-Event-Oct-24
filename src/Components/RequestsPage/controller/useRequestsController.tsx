@@ -2,6 +2,8 @@ import {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 import {selectSetAuthUser} from "../../../slice/authSlice";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import debounce from 'lodash.debounce';
 
 export const useRequestsController = () => {
@@ -16,6 +18,7 @@ export const useRequestsController = () => {
 
   const itemsPerPage = 3;
   const token = useSelector(selectSetAuthUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,11 +40,14 @@ export const useRequestsController = () => {
 
         setData(response.data);
         setFilteredItems(response.data);
-        setPageCount(7);
+        setPageCount(7)
+      } catch (error) {
+        setError(error.message);
         setLoading(false);
-      } catch (err: any) {
-        setError(err.message);
-        setLoading(false);
+        if (axios.isAxiosError(error) && error.response?.status === 500) {
+          navigate('/login');
+          toast.error('Ошибка! Попробуйте еще раз');
+        }
       }
     };
 
