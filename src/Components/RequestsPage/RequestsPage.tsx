@@ -12,7 +12,6 @@ export default function RequestsPage() {
       height: 1025,
       border: '1px solid grey',
       display:'flex',
-      flexDirection: 'column',
       gap:'24px',
       position:'relative',
       justifyContent:'center'
