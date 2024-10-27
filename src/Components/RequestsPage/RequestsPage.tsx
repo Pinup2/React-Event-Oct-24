@@ -12,10 +12,10 @@ export default function RequestsPage() {
       height: 1025,
       border: '1px solid grey',
       display:'flex',
-      "flex direction": 'column',
+      flexDirection: 'column',
       gap:'24px',
       position:'relative',
-      'justify-content':'center'
+      justifyContent:'center'
     }}>
       {paginateData(page).length > 0 ? (
         paginateData(page).map((item) => (

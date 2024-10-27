@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {selectSetAuthUser} from "../../../slice/authSlice";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const useRequestsController = () => {
   const [page, setPage] = useState(1);
@@ -9,6 +11,7 @@ export const useRequestsController = () => {
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 3;
   const token = useSelector(selectSetAuthUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +29,10 @@ export const useRequestsController = () => {
         setPageCount(7)
       } catch (error) {
         console.error("Ошибка при загрузке данных с сервера:", error);
+        if (axios.isAxiosError(error) && error.response?.status === 500) {
+          navigate('/login');
+          toast.error('Ошибка! Попробуйте еще раз');
+        }
       }
     };
 
