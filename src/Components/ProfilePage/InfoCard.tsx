@@ -7,7 +7,7 @@ import InfoFavorites from "./components/InfoFavorites"
 import userDetails from "./userDetails"
 
 type dataProps = {
-  data: userDetails | {},
+  data: userDetails,
 };
 
 export default function InfoCard({ data } : dataProps) {

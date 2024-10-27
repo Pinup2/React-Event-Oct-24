@@ -11,6 +11,7 @@ import { selectIsAuthorized } from './slice/authSlice';
 import { Provider } from 'react-redux';
 import store from './store/createStore';
 import AuthPage from './Components/AuthPage';
+import ProfilePage from './Components/ProfilePage/ProfilePage'
 import RequestsPage from "./Components/RequestsPage/RequestsPage";
 import 'react-toastify/dist/ReactToastify.css';
 import {HelpRequestPage} from "./Components/HelpRequestPage/HelpRequestPage";
@@ -35,6 +36,7 @@ const App = () => (
           element={<ProtectedRoute element={<HelpRequestPage />} />}
         />
         <Route path="/" element={<ProtectedRoute element={<RequestsPage />} />} />
+        <Route path="/user" element={<ProtectedRoute element={<ProfilePage />} />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

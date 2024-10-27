@@ -10,7 +10,7 @@ import InfoCard from "./InfoCard"
 import "./ProfilePage.css"
 
 export default function Profile() {
-  const [ data, setData ] = useState<userDetails | {}>({});
+  const [ data, setData ] = useState<userDetails>({});
   const token = useSelector((state:RootState) => state.auth.token);
 
   useEffect(() => {
