@@ -1,6 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material"
 
-export default function Location() {
+type LocationProps = {
+  district: string,
+  city: string,
+}
+
+export default function Location({ district, city } : LocationProps) {
   return (
     <Box>
       <Stack gap="5px" direction="row">
@@ -11,7 +16,7 @@ export default function Location() {
             Область: 
         </Typography>
         <Typography variant="subtitle2">
-          Область
+          {district}
         </Typography>
       </Stack>
       <Stack gap="5px" direction="row">
@@ -21,7 +26,7 @@ export default function Location() {
             Населенный пункт: 
         </Typography>
         <Typography variant="subtitle2">
-          Пункт
+          {city}
         </Typography>
       </Stack>
     </Box>

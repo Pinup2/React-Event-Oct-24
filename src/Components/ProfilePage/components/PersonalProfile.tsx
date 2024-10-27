@@ -1,7 +1,13 @@
 import { Box, Stack, Typography } from "@mui/material"
 import Header from "./Header"
 
-export default function PersonalProfile() {
+type detailsProps = {
+  name: string,
+  lastName: string,
+}
+
+export default function PersonalProfile({ name, lastName } : detailsProps) {
+
   return (
     <Box>
       <Header name="Профиль"/>
@@ -13,7 +19,7 @@ export default function PersonalProfile() {
             Фамилия: 
         </Typography>
         <Typography variant="subtitle2">
-          Фамилия
+          {lastName}
         </Typography>
       </Stack>
       <Stack gap="5px" direction="row">
@@ -23,7 +29,7 @@ export default function PersonalProfile() {
             Имя: 
         </Typography>
         <Typography variant="subtitle2">
-          Имя
+          {name}
         </Typography>
       </Stack>
     </Box>

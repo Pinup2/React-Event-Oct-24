@@ -1,10 +1,17 @@
 import { Box, Button, Stack, Typography } from "@mui/material"
 import Header from "./Header"
 
-export default function UserText() {
+type TextProps = {
+  name: string,
+  lastName: string,
+  status: string,
+}
+
+export default function UserText({ name, lastName, status } : TextProps) {
+
   return (
     <Box sx={{padding: "20px", borderTop: "1px solid #0000001F"}}>
-      <Header name="Имя Фамилия"/>
+      <Header name={`${name} ${lastName}`}/>
       <Stack gap="5px" direction="row">
         <Typography 
           variant="subtitle2" 
@@ -12,7 +19,7 @@ export default function UserText() {
             Статус: 
         </Typography>
         <Typography variant="subtitle2">
-          Начинающий
+          {status}
         </Typography>
       </Stack>
       <Button variant="outlined" 

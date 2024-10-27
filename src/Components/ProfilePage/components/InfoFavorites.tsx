@@ -1,19 +1,21 @@
-import { Stack, Pagination } from "@mui/material"
+import { Stack, Pagination } from "@mui/material";
 import { useState, useEffect } from "react";
-import FavCard from "./FavCard"
-import { RequestCard } from "../RequestCard/RequestCard";
+import { RequestCard } from "../../RequestCard/RequestCard";
 
-export default function InfoFavorites() {
-  const cards = Array.from(Array(10).keys());
+type favProps = {
+  favouriteRequests: [],
+}
+
+export default function InfoFavorites({ favouriteRequests } : favProps) {
   const [ page, setPage ] = useState<number>(1);
   const [ currentCards, setCurrentCards ] = useState<number[]>([]);
-  const [ cardsPerPage, setCardsPerPage ] = useState(3);
+  const cardsPerPage = 3;
 
   const lastCardsIndex = page * cardsPerPage;
   const firsCardIndex = lastCardsIndex - cardsPerPage; 
 
   useEffect(() => {
-    const currentCards = cards.slice(firsCardIndex, lastCardsIndex);
+    const currentCards = favouriteRequests.slice(firsCardIndex, lastCardsIndex);
     setCurrentCards(currentCards);
   }, [page])
 
@@ -37,9 +39,9 @@ export default function InfoFavorites() {
           requestGoalCurrentValue={5}
           />)}
       </Stack>
-      <Pagination
+      {favouriteRequests.length > 0 && <Pagination
         onChange={turnPage} 
-        count={Math.ceil(cards.length / cardsPerPage)}
+        count={Math.ceil(favouriteRequests.length / cardsPerPage)}
         size="large"
         page={page}
         sx={{
@@ -51,7 +53,7 @@ export default function InfoFavorites() {
               color: "white"
           }},
         }}
-      />
+      />}
     </Stack>
   )
 }
