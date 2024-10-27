@@ -38,7 +38,7 @@ const Footer = () => {
       <Link
         display="flex" 
         justifyContent="flex-end"
-        href="https://t.me/pixels_and_feather"
+        href="https://t.me/natti_jun_front_chat"
         sx={{
           textDecoration: 'none',
           color: 'black',
