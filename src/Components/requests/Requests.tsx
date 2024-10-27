@@ -34,7 +34,7 @@ export default function Requests() {
         // eslint-disable-next-line no-undef
         console.error("Ошибка при загрузке данных с сервера:", error);
         if (axios.isAxiosError(error) && error.response?.status === 500) {
-          navigate('/');
+          navigate('/login');
           toast.error('Ошибка! Попробуйте еще раз');
           console.log('Ошибка! Попробуйте еще раз');
         }
