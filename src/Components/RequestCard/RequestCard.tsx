@@ -10,9 +10,11 @@ import unselectedButton from './assets/_IconButton_.svg'
 
 import styles from './styles.module.css'
 import {calculateProgress, formatDateString, imageSelector} from "./helpers";
+import { useNavigate} from "react-router-dom";
 
 type RequestCardPropsType = {
   title: string;
+  id: string;
   organization: {
     title: string,
     isVerified: boolean
@@ -29,12 +31,24 @@ type RequestCardPropsType = {
   endingDate: string,
   requestGoal: number,
   requestGoalCurrentValue: number,
+  onClick: () => void,
 }
 
 
-export const RequestCard = ({title, organization, location, goalDescription, requesterType, helpType, endingDate, requestGoal, requestGoalCurrentValue}: RequestCardPropsType) => {
+export const RequestCard = ({ title,
+                              id,
+                              organization,
+                              location,
+                              goalDescription,
+                              requesterType,
+                              helpType,
+                              endingDate,
+                              requestGoal,
+                              onClick,
+                              requestGoalCurrentValue}: RequestCardPropsType) => {
   // TODO убрать isClicked
   const isClicked = true;
+  const navigate = useNavigate();
   // TODO пример мапинга — удалить после использования
   // <div style={{display: 'flex', gap: '16px'}}>
   //   {requestCardMock.map(card => {
@@ -57,7 +71,7 @@ export const RequestCard = ({title, organization, location, goalDescription, req
 
 
   return (
-      <Card className={styles.card}>
+      <Card className={styles.card} onClick={() => navigate(`/request/${id}`)}>
         <div style={{padding: '16px'}}>
           <img src={imageSelector(requesterType, helpType)} alt="card image" style={{height: '220px'}} />
           <div className={styles.titleContainer}>
@@ -69,8 +83,6 @@ export const RequestCard = ({title, organization, location, goalDescription, req
         </div>
 
         <Divider orientation="horizontal" />
-
-
 
         <div className={styles.container}>
 
@@ -126,7 +138,7 @@ export const RequestCard = ({title, organization, location, goalDescription, req
             </div>
           </div>
 
-          <Button variant="contained" fullWidth>Помочь</Button>
+          <Button variant="contained" fullWidth onClick={onClick}>Помочь</Button>
         </div>
 
       </Card>
