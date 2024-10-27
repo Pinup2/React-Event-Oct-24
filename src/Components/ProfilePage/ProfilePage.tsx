@@ -74,16 +74,17 @@ export default function Profile() {
       <Box 
         sx={{
           bgcolor: grey[100],
-          padding: "46px",
-          width: '78.125%',
+          padding: "40px",
+          width: "100%",
+          minHeight: "calc(100vh-236px)",
           border: "1px solid #0000001F"
         }}>
         <Typography variant="h4" component="h1">Мой профиль</Typography>
         {error ? 
-        <Box sx={{}}>
-          <img src={errorImg} style={{width: "100%"}}/>
-        </Box> :
-        <Stack direction="row" spacing="20px" sx={{marginTop: "46px"}}>
+        <Stack sx={{justifyContent: "center", alignItems: "center"}}>
+          <img src={errorImg} style={{width: "60%"}}/>
+        </Stack> :
+        <Stack direction="row" spacing="20px" sx={{marginTop: "20px"}}>
           <UserCard data={data}/>
           <InfoCard data={data}/>
         </Stack>}
