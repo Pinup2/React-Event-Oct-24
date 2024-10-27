@@ -7,10 +7,10 @@ import InfoFavorites from "./components/InfoFavorites"
 import userDetails from "./userDetails"
 
 type dataProps = {
-  data: userDetails,
+  data: userDetails | {},
 };
 
-export default function InfoCard({data } : dataProps) {
+export default function InfoCard({ data } : dataProps) {
   const { contacts, favouriteRequests } = data;
   const sections = ["pers", "cont", "fav"];
   const [ section, setSection ] = useState<string>(sections[0]);
