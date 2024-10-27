@@ -5,26 +5,10 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import FavoriteButton from "./FavoriteButton";
 import {formatDateString} from "../../RequestCard/helpers";
+import {HelpRequestI} from "../types";
 
-interface HelpRequest {
-  title: string,
-  actionsSchedule: {isDone?: boolean | undefined, stepLabel: string}[],
-  contacts: {email: string, phone: string, website: string},
-  contributorsCount: number,
-  description: string,
-  endingDate: string,
-  goalDescription: string,
-  helpType: string,
-  helperRequirements: {helperType: string, isOnline: boolean, qualification: string},
-  id: string,
-  location: {city: string, district: string, latitude: number, longitude: number},
-  organization: {isVerified: boolean, title: string},
-  requestGoal: number,
-  requestGoalCurrentValue: number,
-  requesterType: string,
-}
 interface HelpRequestData {
-  data: HelpRequest
+  data: HelpRequestI
 }
 
 const HelpRequestDetails: React.FC = ({data}: HelpRequestData) => {

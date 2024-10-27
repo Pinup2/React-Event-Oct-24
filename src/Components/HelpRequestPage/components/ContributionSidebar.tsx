@@ -1,10 +1,13 @@
 import { Box, Typography, Button, LinearProgress } from '@mui/material';
 import {toast} from "react-toastify";
 import {calculateProgress, formatDateString} from "../../RequestCard/helpers";
+import {HelpRequestI} from "../types";
 
+interface ContributionSidebarData {
+  data: HelpRequestI
+}
 
-export const ContributionSidebar = ({ data }: any) => {
-  console.log('внутри2', data)
+export const ContributionSidebar = ({ data }: ContributionSidebarData) => {
   const handleContribute = () => {
     toast.success('Успех! Спасибо за помощь');
   };
