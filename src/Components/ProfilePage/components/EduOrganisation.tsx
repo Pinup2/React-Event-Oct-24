@@ -1,10 +1,13 @@
 import { Box, Stack, Typography } from "@mui/material"
 
 type OrganisationProps = {
-  university: boolean,
+  name: string,
+  level: string,
+  specialization?: string,
+  year: number,
 }
 
-export default function EduOrganisation({ university } : OrganisationProps) {
+export default function EduOrganisation({ name, level, specialization, year } : OrganisationProps) {
   return (
     <Box>
       <Stack gap="5px" direction="row">
@@ -15,7 +18,7 @@ export default function EduOrganisation({ university } : OrganisationProps) {
             Учреждение: 
         </Typography>
         <Typography variant="subtitle2">
-          Учреждение
+          {name}
         </Typography>
       </Stack>
       <Stack gap="5px" direction="row">
@@ -26,10 +29,10 @@ export default function EduOrganisation({ university } : OrganisationProps) {
             Уровень образования: 
         </Typography>
         <Typography variant="subtitle2">
-          Уровень
+          {level}
         </Typography>
       </Stack>
-      {university && <Stack gap="5px" direction="row">
+      {specialization && <Stack gap="5px" direction="row">
         <Typography 
           variant="subtitle2" 
           gutterBottom = {true}
@@ -37,7 +40,7 @@ export default function EduOrganisation({ university } : OrganisationProps) {
             Направление: 
         </Typography>
         <Typography variant="subtitle2">
-          Направление
+          {specialization}
         </Typography>
       </Stack>}
       <Stack gap="5px" direction="row">
@@ -47,7 +50,7 @@ export default function EduOrganisation({ university } : OrganisationProps) {
             Год окончания: 
         </Typography>
         <Typography variant="subtitle2">
-          Год
+          {year}
         </Typography>
       </Stack>
     </Box>
