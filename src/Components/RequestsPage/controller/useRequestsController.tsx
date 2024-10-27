@@ -1,36 +1,70 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 import {selectSetAuthUser} from "../../../slice/authSlice";
 import axios from "axios";
+import debounce from 'lodash.debounce';
 
 export const useRequestsController = () => {
   const [page, setPage] = useState(1);
-  const [data, setData] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+  const [data, setData] = useState<any>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  // временные стейты для поиска
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
+
   const itemsPerPage = 3;
   const token = useSelector(selectSetAuthUser);
 
   useEffect(() => {
     const fetchData = async () => {
+
+      if (!token) {
+        setError('Токен не найден');
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get("https://natticharity.eveloth.ru/api/request", {
           headers: {
-            Authorization: `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
           },
-          params:{
-            page:page,
-            limit:itemsPerPage
-          }
-        }); // Запрос к серверу
+          params:{ page:page, limit:itemsPerPage },
+          timeout: 10000,
+        });
+
         setData(response.data);
-        setPageCount(7)
-      } catch (error) {
-        console.error("Ошибка при загрузке данных с сервера:", error);
+        setFilteredItems(response.data);
+        setPageCount(7);
+        setLoading(false);
+      } catch (err: any) {
+        setError(err.message);
+        setLoading(false);
       }
     };
 
-    fetchData();
-  }, [token]);
+    fetchData()
+  }, [ token]);
+
+  // функционал для SearchInput
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((value) => {
+        const filtered = data.filter((item) =>
+          item.title.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilteredItems(filtered);
+      }, 500),
+    [data]
+  );
+
+  const inputHandleChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    debouncedSearch(value);
+  };
 
   // Пагинация
   const paginateData = (page) => {
@@ -46,5 +80,17 @@ export const useRequestsController = () => {
     // TODO написать запрос POST /api/request/{id}/contribution
     console.log(id);
   }
-  return {paginateData, handlePageChange, pageCount, page, onClickHelpButton}
+
+  return {
+    error,
+    loading,
+    paginateData,
+    handlePageChange,
+    pageCount,
+    page,
+    onClickHelpButton,
+    searchTerm,
+    inputHandleChange,
+    filteredItems
+  }
 }

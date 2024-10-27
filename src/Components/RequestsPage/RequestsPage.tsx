@@ -2,23 +2,36 @@ import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 import { RequestCard } from '../RequestCard/RequestCard';
 import {useRequestsController} from "./controller/useRequestsController";
+import {SearchInput} from "./components/SearchInput/SearchInput";
+import {ErrorPage} from "../HelpRequestPage/components/ErrorPage";
 
 export default function RequestsPage() {
-  const { paginateData, handlePageChange, pageCount, page, onClickHelpButton } = useRequestsController();
+  const {
+    paginateData,
+    handlePageChange,
+    pageCount,
+    page,
+    onClickHelpButton,
+    loading,
+    error
+  } = useRequestsController();
 
   return (
-    <Box sx={{
-      width: 1080,
-      height: 1025,
-      border: '1px solid grey',
-      display:'flex',
-      "flex direction": 'column',
-      gap:'24px',
-      position:'relative',
-      'justify-content':'center'
-    }}>
-      {paginateData(page).length > 0 ? (
-        paginateData(page).map((item) => (
+    <div style={{display: 'flex', flexDirection: 'column',justifyContent: 'space-between', alignItems: 'center'}}>
+      <SearchInput />
+      {loading && <div>Идет загрузка...</div>}
+      {error && <ErrorPage />}
+      {!loading && !error &&
+          <Box sx={{
+            width: 1080,
+            height: 925,
+            display:'flex',
+            "flex direction": 'column',
+            gap:'24px',
+            position:'relative',
+            justifyContent:'center',
+          }}>
+        {paginateData(page).map((item) => (
           <RequestCard
             key={item.id}
             id={item.id}
@@ -33,21 +46,19 @@ export default function RequestsPage() {
             helpType={item.helpType}
             onClick={()=>onClickHelpButton(item.id)}
           />
-        ))
-      ) : (
-        <div>No data</div>
-      )}
+        ))}
 
-      <Pagination
-        sx={{
-          color: '#1E88E5',
-          position: 'absolute',
-          bottom:'40px'
-        }}
-        count={pageCount > 0 ? pageCount : 1}
-        page={page}
-        onChange={handlePageChange}
-      />
-    </Box>
+          </Box>}
+
+      {!error && <Pagination
+          sx={{
+            color: '#1E88E5',
+            marginBottom: '24px'
+          }}
+          count={pageCount > 0 ? pageCount : 1}
+          page={page}
+          onChange={handlePageChange}
+      />}
+    </div>
   );
 }
