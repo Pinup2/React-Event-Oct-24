@@ -31,7 +31,6 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Layout />}>
           <Route path="/login" element={<AuthPage />} />
           <Route path="/profile" element={<ProfilePage />}/>

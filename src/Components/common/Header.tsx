@@ -1,16 +1,15 @@
 import React from "react";
-import { Box, Typography, Button, Popover, Icon } from "@mui/material";
+import { Box, Typography, Button, } from "@mui/material";
 import iconHeader from "../../assets/iconHeader.svg";
 import { useSelector } from "react-redux";
 import { selectIsAuthorized } from '../../slice/authSlice';
 import avatar from "../../assets/avatar.svg";
 import { useState } from "react";
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/createStore';
 import { clearAuthState } from '../../slice/authSlice';
+import ProfilePopover from './ProfilePopover';
 
 const Header = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
@@ -61,55 +60,24 @@ const Header = () => {
          <Button onClick={handleClickAvatar}>
            <img src={avatar} style={{ width: "40px", height: "40px" }} alt="avatar" />
          </Button>
-         <Popover
-           open={open}
-           anchorEl={anchorEl}
-           onClose={handleClosePopover}
-           anchorOrigin={{
-             vertical: 'bottom',
-             horizontal: 'center',
-           }}
-           transformOrigin={{
-             vertical: 'top',
-             horizontal: 'right',
-           }}
-         >
-           <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-           }}>
-              <Button onClick={handleClickProfile}
-              sx={{
-                color: "black",
-              }}>
-                <Icon>
-                  <PersonRoundedIcon />
-                </Icon>
-                <Typography>Мой профиль</Typography>
-              </Button>
-              <Button onClick={handleClickExit}
-              sx={{
-                color: "black",
-              }}>
-                <Icon>
-                  <LogoutRoundedIcon />
-                </Icon>
-                <Typography>Выйти</Typography>
-              </Button>
-           </Box>
-         </Popover>
+         <ProfilePopover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClosePopover}
+          onClickProfile={handleClickProfile}
+          onClickExit={handleClickExit}
+          />
        </Box>
       :
       <Box display="flex" justifyContent="flex-end">
-        <Button
+        <Button onClick={handleClickExit}
           variant="outlined"
           sx={{
             color: 'black',
             borderColor: 'black',
           }}
         >
-          Войти
+          Выйти
         </Button>
       </Box>}
     </Box>
