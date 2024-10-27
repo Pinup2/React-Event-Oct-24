@@ -5,6 +5,8 @@ import { Pagination } from '@mui/material';
 import { RequestCard } from '../RequestCard/RequestCard';
 import {useSelector} from "react-redux";
 import { selectSetAuthUser } from "../../slice/authSlice";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Requests() {
   const [page, setPage] = useState(1);
@@ -12,6 +14,7 @@ export default function Requests() {
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 3;
   const token = useSelector(selectSetAuthUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +33,11 @@ export default function Requests() {
       } catch (error) {
         // eslint-disable-next-line no-undef
         console.error("Ошибка при загрузке данных с сервера:", error);
+        if (axios.isAxiosError(error) && error.response?.status === 500) {
+          navigate('/');
+          toast.error('Ошибка! Попробуйте еще раз');
+          console.log('Ошибка! Попробуйте еще раз');
+        }
       }
     };
 
