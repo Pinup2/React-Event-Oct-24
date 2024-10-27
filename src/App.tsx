@@ -34,7 +34,7 @@ const App = () => (
           <Route index element={<ProtectedRoute element={<Requests />} />} />
         </Route>
       </Routes>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" theme="colored"/>
     </BrowserRouter>
   </Provider>
 );
