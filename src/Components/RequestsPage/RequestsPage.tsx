@@ -16,6 +16,9 @@ export default function RequestsPage() {
     error
   } = useRequestsController();
 
+  // TODO унести paginateData(page) в useRequestsController — махинации с данными делаем в useRequestsController
+  // на выход передаем уже готовую data
+
   return (
     <div style={{display: 'flex', flexDirection: 'column',justifyContent: 'space-between', alignItems: 'center'}}>
       <SearchInput />
